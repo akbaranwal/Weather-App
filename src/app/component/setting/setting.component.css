@@ -1,0 +1,32 @@
+.container {
+  text-align: center;
+}
+
+.setting {
+  text-align: center;
+  font-weight: 1000;
+  font-size: 37px;
+}
+
+.form-control {
+  margin: 10px;
+}
+
+.btn-outline-dark {
+  margin-top: 10px;
+  margin-left: auto;
+}
+
+.btn {
+  float: right;
+  margin: 10px;
+  text-align: right;
+}
+
+.form-select {
+  width: 75%;
+}
+
+/* .form-control {
+  width: 100%;
+} */

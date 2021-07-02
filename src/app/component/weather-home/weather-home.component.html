@@ -1,0 +1,113 @@
+<h1 class="home"> WEATHER APP</h1>
+<hr>
+<nav class="navbar navbar-expand-lg navbar-light bg-white ">
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+        <a routerLink="/weather"><span class="glyphicon glyphicon-home"></span>Home</a>
+        </div>
+        <div class="col-md-6">
+        <a routerLink="/setting" ><span class="glyphicon glyphicon-cog"></span>Setting</a>
+        </div>
+      </div>
+  </div>
+</nav>
+
+<div class="container">
+
+      <div class="container-fluid">
+        <h1> Select city  </h1>
+        <form>
+          <div class="row">
+            <select class="form-select"  [(ngModel)]="selectedValue"  name="city">
+              <option *ngFor="let city of cities" >
+                <div *ngIf="city">
+                  {{ city }}
+                </div>
+              </option>
+            </select>
+          </div>
+        </form>
+
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-dark" (click)="onsubmit()"> search </button>
+      </div>
+</div>
+
+  <br> <br>
+  <div class="container" *ngIf="weatherData">
+    <h1> {{ coOrdinates[0].name}} </h1>
+    <h2> {{ weatherData.current.temp }}&deg; </h2>
+    <div class="img">
+      <img src="http://openweathermap.org/img/w/{{ weatherData.current.weather[0].icon }}.png">
+    </div>
+
+    <h3> Kind of Weather : {{ weatherData.current.weather[0].description }} </h3>
+    <h4> WindSpeed :  {{ weatherData.current.wind_speed }} m/s</h4>
+    <h4> Pressure : {{ weatherData.current.pressure }} </h4>
+
+  </div>
+
+  <div class="row display"  *ngIf="weatherData">
+    <hr>
+    <div class="col-sm-3 md-4" *ngFor="let fivedaysData of forecastDaily ">
+      <div class="card-container">
+        <div class="card card-size">
+          <div class="card-body"  >
+            <p class="card-text">{{ fivedaysData.temp.day }}&deg;</p>
+            <div class="img">
+              <img src="http://openweathermap.org/img/w/{{ fivedaysData.weather[0].icon }}.png">
+            </div>
+            <p class="card-text"> {{ fivedaysData.weather[0].description }}</p>
+            <p class="card-text"> {{ fivedaysData.wind_speed }}</p>
+            <p class="card-text"> {{ fivedaysData.pressure }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!--
+<div class="container" *ngIf="currentCity">
+  <h1> {{ weatherData.name}} </h1>
+  <h2> {{ weatherData.current.temp }}&deg; </h2>
+  <div class="img">
+    <img src="http://openweathermap.org/img/w/{{ weatherData.current.weather[0].icon }}.png">
+  </div>
+
+  <h3> Kind of Weather : {{ weatherData.current.weather[0].description }} </h3>
+  <h4> WindSpeed :  {{ weatherData.current.wind_speed }} m/s</h4>
+  <h4> Pressure : {{ weatherData.current.pressure }} </h4>
+
+</div>
+
+    <div class="row display"  *ngIf="currentCity">
+      <hr>
+      <div class="col-sm-3 md-4" *ngFor="let fivedaysData of forecastDaily ">
+        <div class="card-container">
+          <div class="card card-size">
+            <div class="card-body"  >
+              <p class="card-text">{{ fivedaysData.temp.day }}&deg;</p>
+              <div class="img">
+                <img src="http://openweathermap.org/img/w/{{ fivedaysData.weather[0].icon }}.png">
+              </div>
+              <p class="card-text"> {{ fivedaysData.weather[0].description }}</p>
+              <p class="card-text"> {{ fivedaysData.wind_speed }}</p>
+              <p class="card-text"> {{ fivedaysData.pressure }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ -->
+
+
+
+<!--
+</div> -->
+
+
+<router-outlet></router-outlet>
